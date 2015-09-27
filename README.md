@@ -7,6 +7,11 @@ I claim no reponsibility for the examples themselves, Caleb did a great job, I m
 
 Enjoy!
 
+### Some extras
+
+If you develop in linux and often use nano, I've added a file "golang.nanorc" you can use to syntax-highlight your code. Simply copy/move it to /usr/share/nano/golang.nanorc
+
+
 ### Contributing
 
 Did you find a bug or want to contribute? Fork and pull-request.
