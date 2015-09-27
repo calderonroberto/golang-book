@@ -1,5 +1,5 @@
 An Introduction to Programming in Go
-####################################
+====================================
 
 A documented compilation of code examples and exercises that follow the book ["An Introduction of Programming in GO](https://www.golang-book.com/books/intro) by Caleb Doxsey.
 
