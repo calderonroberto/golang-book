@@ -4,7 +4,6 @@ package main //package declaration.
 Your first program
 */
 
-
 import "fmt" // This is how you include other packages
 
 // This is a single line comment
@@ -15,8 +14,8 @@ comment.
 */
 
 // A function, "main" will run when executing the program
-func main(){
+func main() {
 	fmt.Println("Hello World")
-	// Find more about fmt by typing 
+	// Find more about fmt by typing
 	//"godoc fmt Println" in the commandline
 }

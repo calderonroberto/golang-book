@@ -4,15 +4,14 @@ import "fmt"
 
 var globalVariable = "Global Variable"
 
-
 func main() {
 
 	/*
 	* Introduction
-	*/
+	 */
 
 	// Declaring a variable with "var" and its type.
-	var x string 
+	var x string
 	x = "Hello"
 	fmt.Println(x)
 	x += " there." // Concatenating strings
@@ -34,9 +33,9 @@ func main() {
 	var d = "Hello Neptunians!"
 	fmt.Println(d)
 
-     	/*
-        * Naming Conventions
-        */
+	/*
+	 * Naming Conventions
+	 */
 
 	// A convention in golang are "camel case" variable names
 	dogsName := "Max"
@@ -44,14 +43,14 @@ func main() {
 
 	/*
 	* Scope
-	*/
+	 */
 
 	// Variables outside can be accessed
 	fmt.Println(globalVariable)
 
 	/*
 	* Constants
-	*/
+	 */
 
 	const constantString string = "A Constant String"
 	// constantString = "Will cause compile time error"
@@ -59,13 +58,13 @@ func main() {
 
 	/*
 	* Multiple variable definition
-	*/
+	 */
 
 	// A shorthand to define multiple variables
 	var (
-	  s = 5
-	  u = 10
-	  p = 15
+		s = 5
+		u = 10
+		p = 15
 	)
 	fmt.Println(s + u - p)
 }
