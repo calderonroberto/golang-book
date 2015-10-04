@@ -135,4 +135,9 @@ func main() {
 	// Calling an interface-designed function:
 	fmt.Println(totalArea(&c, &r))
 
+	// Interface that has an interface as a field:
+	shapes := []Shape{&c,&r}
+	m := MultiShape{shapes}
+	fmt.Println(m.area())
+
 }
