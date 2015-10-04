@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-// A global variable 
-var msg string =  "Calculating"
+// A global variable
+var msg string = "Calculating"
 
 // A function called average taking a slice and returning a float64
 // The parameters and the return type are the  "function signature"
 // func NAME(PARAMETER) RETURNTYPE
-func average(xs []float64) float64{
+func average(xs []float64) float64 {
 	//panic("Not implemented") //throws an error
 	// functions don't have access to calling function vars:
 	// fmt.Println(x) //won't work
 	// but they have access to global vars
 	fmt.Println(msg)
 	total := 0.0
-	for _,v := range xs {
+	for _, v := range xs {
 		total += v
 	}
 	return total / float64(len(xs))
@@ -23,34 +23,34 @@ func average(xs []float64) float64{
 
 /*
 *Functions
-*/
+ */
 
 // Functions can name the return type:
 func f2() (r int) {
-	r=1
+	r = 1
 	return
 }
 
 /*
 * Returning multiple values
-*/
+ */
 
 // A function can also return multiple values
 // this is often used to return error or success
 // like in: x, ok := f()
-func f () (int, int) {
-	return 5,6
+func f() (int, int) {
+	return 5, 6
 }
 
 /*
 * Variadic Functions
-*/
+ */
 
 // Variadic functions allow us to take zero or more parameters
 // by using '...', in this case we take zero or more ints:
-func add(args ...int) int{
+func add(args ...int) int {
 	total := 0
-	for _,v := range args{
+	for _, v := range args {
 		total += v
 	}
 	return total
@@ -58,13 +58,13 @@ func add(args ...int) int{
 
 /*
 * Closure
-*/
+ */
 
+// In golang it is possible to create functions inside of functions
 // A function variable with the non-local variables it references
 // is known as closure. In main, increment and the variable x form
 // the closure. Here is a more interesting example, a function that
 // returns another function that when called generates a sequence
-
 func makeEvenGenerator() func() uint {
 	i := uint(0)
 	return func() (ret uint) {
@@ -76,7 +76,7 @@ func makeEvenGenerator() func() uint {
 
 /*
 * Recursion
-*/
+ */
 
 // A function is able to call itself:
 func factorial(x uint) uint {
@@ -86,29 +86,38 @@ func factorial(x uint) uint {
 	return x * factorial(x-1)
 }
 
-// In golang it is possible to create functions inside of functions
+/*
+* Defer, Panic and Recover
+ */
 
+func first() {
+	fmt.Println("1st")
+}
+func second() {
+	fmt.Println("2nd")
+}
 
-func main(){
+func main() {
 	x := 5
 	fmt.Println(x)
-	xs := []float64{98,93,77,82,83}
+	xs := []float64{98, 93, 77, 82, 83}
 	fmt.Println(average(xs))
 
 	fmt.Println(f2()) // returning a named type
 
-	x,y := f() //multiple types
-	fmt.Println(x,y)
+	x, y := f() //multiple types
+	fmt.Println(x, y)
 
-	fmt.Println(add(1,2,3)) // variadic functions
+	fmt.Println(add(1, 2, 3)) // variadic functions
 	// we can pass a slice of ints using ...
-	xss := []int{1,2,3}
+	xss := []int{1, 2, 3}
 	fmt.Println(add(xss...))
 
 	// you can define function variables that have access
 	// to the local variables (same scope) in this function
 	increment := func() int {
-		x++; return x
+		x++
+		return x
 	}
 	fmt.Println(increment())
 	fmt.Println(increment())
@@ -121,6 +130,22 @@ func main(){
 	// unlike normal local variables the local i variable
 	// defined in makeEvenGenerator persists between calls
 
+	// using recursive functions
 	fmt.Println(factorial(22))
 
+	// using defer, moves the call to second to the end
+	// of the function. Defer is often used when resources
+	// need to be freed in some way, like opening a file
+	// f, _ := os.Open(filename)
+	// defer f.Close() // run even if a run-time panic occurs
+	defer second()
+	first()
+
+	// using recover will return the value passed to the call
+	// to panic. However, we have to pair it with defer:
+	defer func() { // this defer will be before the one above
+		str := recover()
+		fmt.Println(str)
+	}() //remember that defer must be a call to a function, thus ()
+	panic("PANIC")
 }
