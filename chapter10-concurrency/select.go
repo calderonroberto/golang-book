@@ -17,7 +17,7 @@ func main() {
 	}()
 
 	go func() {
-		for{
+		for {
 			c2 <- "from 2"
 			time.Sleep(time.Second * 3)
 		}
@@ -28,11 +28,11 @@ func main() {
 			// select is like a switch for channels
 			// often used to implement a timeout
 			select {
-			case msg1 := <- c1:
+			case msg1 := <-c1:
 				fmt.Println("Message 1", msg1)
-			case msg2 := <- c2:
+			case msg2 := <-c2:
 				fmt.Println("Message 2", msg2)
-			case <- time.After(time.Second):
+			case <-time.After(time.Second):
 				fmt.Println("timeout")
 			default:
 				fmt.Println("nothing ready")
@@ -47,7 +47,6 @@ func main() {
 	// the channel will wait until the other side is ready.
 	// a buffered channel is ASYNCRONOUS, sending or receiving
 	// will not wait unless the channel is already full.
-
 
 	var input string
 	fmt.Scanln(&input)
