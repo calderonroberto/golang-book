@@ -1,4 +1,5 @@
-package math
+package math //package names generally match the folders they fall in.
+// this is a nice convention as it keeps things clean
 
 // To install this package run "go install" in this folder
 
