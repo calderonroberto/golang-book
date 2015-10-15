@@ -25,5 +25,5 @@ func Average(xs []float64) float64 {
 
 //private function
 func pi() {
-	return float64(3.1515)
+	//return float64(3.1515)
 }
