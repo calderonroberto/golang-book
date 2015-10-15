@@ -40,4 +40,9 @@ func main() {
 		// "TEST"
 		strings.ToUpper("test"),
 	)
+
+	// converting string to binary and viceversa
+	arr := []byte("test")
+	str := string([]byte{'t','e','s','t'})
+
 }
