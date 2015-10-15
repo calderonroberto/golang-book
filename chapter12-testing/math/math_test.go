@@ -6,10 +6,31 @@ import "testing"
 // and taking one argument of type *testing.T, convention is to 
 // use the name of the funciton tested (i.e. TestAverage)
 
+
+// Struct to represent input and output for the function
+type testpair struct {
+	values[]float64
+	average float64
+}
+
+// A list of inputs and expected outputs
+var tests = []testpair{
+	{ []float64{1,2}, 1.5 },
+	{ []float64{1,1,1,1,1,1}, 1 },
+	{ []float64{-1,1}, 0 },
+}
+
+
+// Test that for each in the list of inputs/outputs.
 func TestAverage(t *testing.T) {
-	var v float64
-	v = Average([]float64{1,2})
-	if v != 1.5{
-		t.Error("Expected 1.5, got ", v)
+	for _, pair := range tests {
+		v := Average(pair.values)
+		if v!= pair.average{
+			t.Error(
+				"For", pair.values,
+				"expected", pair.average,
+				"got", v,
+			)
+		}
 	}
 }
