@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 )
 
-func main(){
+func main() {
 	bs, err := ioutil.ReadFile("test.txt")
 	if err != nil {
 		return
