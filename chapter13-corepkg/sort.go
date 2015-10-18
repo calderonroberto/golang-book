@@ -1,10 +1,13 @@
 package main
 
-import ("fmt" ; "sort")
+import (
+	"fmt"
+	"sort"
+)
 
 type Person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 type ByName []Person
@@ -19,16 +22,14 @@ func (this ByName) Swap(i, j int) {
 	this[i], this[j] = this[j], this[i]
 }
 
-// The Sort function in sort takes a sort.Interface and sorts it. 
-// The sort Interface requires 3 methods: Len, Less and Swap. 
-// To define our own sort we create a new type (ByName) and make it 
-// equivalent to a slice of what we want to sort. 
+// The Sort function in sort takes a sort.Interface and sorts it.
+// The sort Interface requires 3 methods: Len, Less and Swap.
+// To define our own sort we create a new type (ByName) and make it
+// equivalent to a slice of what we want to sort.
 // We then define the 3 methods.
 
-
-
 func main() {
-	kids := []Person {
+	kids := []Person{
 		{"Jill", 9},
 		{"Jack", 10},
 	}
